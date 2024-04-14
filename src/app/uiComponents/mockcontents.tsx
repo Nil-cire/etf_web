@@ -30,3 +30,6 @@ const etf = [
     interest: [{ month: "June", value: 1 }],
   },
 ];
+
+
+export { world, materials, etf }
