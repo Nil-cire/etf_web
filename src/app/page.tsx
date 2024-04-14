@@ -1,5 +1,6 @@
 import Head from "next/head";
 import NextTable from "./uiComponents/nextTable";
+import NextCards from "./uiComponents/nextCards";
 export default function Home() {
   return (
     <>
@@ -9,30 +10,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center items-center h-screen bg-white">
-        <section>
-          <h3 className="font-bold text-xl mb-4">
-            Tailwind CSS is installed successfully ✅
-          </h3>
+      <main className="flex justify-center items-center h-screen bg-black">
+        <div className="flex flex-col w-4/6">
+          <NextCards />
           <NextTable />
-          <ul className="list-disc list-inside">
-            <li>
-              <p className="inline">
-                If you cannot see this walking cat
-                <span className="hidden">🐈</span>
-              </p>
-            </li>
-
-            <li>
-              <p className="inline text-red-800">If this is red in color</p>
-            </li>
-            <li>
-              <p className="inline bg-blue-800 text-white">
-                If this has a blue background color
-              </p>
-            </li>
-          </ul>
-        </section>
+        </div>
       </main>
     </>
   );

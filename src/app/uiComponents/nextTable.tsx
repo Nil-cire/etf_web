@@ -1,22 +1,31 @@
-"use client"
+"use client";
 import React from "react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, getKeyValue} from "@nextui-org/react";
-import { world, materials, etf } from "./mockcontents";
-export default function nextTable() {
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Pagination,
+  getKeyValue,
+} from "@nextui-org/react";
+import { etfs } from "./mockcontents";
+export default function NextTable() {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 4;
 
-  const pages = Math.ceil(etf.length / rowsPerPage);
+  const pages = Math.ceil(etfs.length / rowsPerPage);
 
   const items = React.useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
-    return etf.slice(start, end);
-  }, [page, etf]);
+    return etfs.slice(start, end);
+  }, [page, etfs]);
 
   return (
-    <Table 
+    <Table
       aria-label="Example table with client side pagination"
       bottomContent={
         <div className="flex w-full justify-center">
@@ -41,9 +50,11 @@ export default function nextTable() {
         <TableColumn key="status">STATUS</TableColumn>
       </TableHeader>
       <TableBody items={items}>
-        {(item) => (
+        {(item: any) => (
           <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+            {(columnKey) => (
+              <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+            )}
           </TableRow>
         )}
       </TableBody>
