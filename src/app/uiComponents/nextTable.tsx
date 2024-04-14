@@ -45,13 +45,13 @@ export default function NextTable() {
       }}
     >
       <TableHeader>
+        <TableColumn key="type">TYPE</TableColumn>
         <TableColumn key="name">NAME</TableColumn>
-        <TableColumn key="role">ROLE</TableColumn>
-        <TableColumn key="status">STATUS</TableColumn>
+        <TableColumn key="point">POINT</TableColumn>
       </TableHeader>
       <TableBody items={items}>
         {(item: any) => (
-          <TableRow key={item.name}>
+          <TableRow key={item.id}>
             {(columnKey) => (
               <TableCell>{getKeyValue(item, columnKey)}</TableCell>
             )}

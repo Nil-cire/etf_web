@@ -17,17 +17,15 @@ const material = {
   thirty_day_trend: { point: 1, diff: "material" },
 };
 
-const etf = [
-  {
-    type: "etf",
-    name: "etf",
-    id: "etf",
-    point: 1,
-    trend: { point: 1, diff: "etf" },
-    estimate_interest: "etf",
-    interest: [{ month: "June", value: 1 }],
-  },
-];
+const etf = {
+  type: "etf",
+  name: "etf",
+  id: "etf",
+  point: 1,
+  trend: { point: 1, diff: "etf" },
+  estimate_interest: "etf",
+  interest: [{ month: "June", value: 1 }],
+};
 
 const addMockMaterials = (material: any) => {
   let res: any = [];
