@@ -1,6 +1,7 @@
 import Head from "next/head";
 import NextTable from "./uiComponents/nextTable";
 import NextCards from "./uiComponents/nextCards";
+import NextTab from "./uiComponents/nextTab";
 export default function Home() {
   return (
     <>
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="flex justify-center items-center h-screen bg-black">
         <div className="flex flex-col w-4/6">
           <NextCards />
+          <NextTab />
           <NextTable />
         </div>
       </main>

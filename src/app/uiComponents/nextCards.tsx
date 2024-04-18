@@ -10,7 +10,6 @@ type material = {
   point: number;
 };
 export default function NextCards() {
-  console.log({ materials });
   return (
     <div className="grid grid-cols-5 gap-4">
       {materials.map(({ type, name, id, point }: material) => (
@@ -24,7 +23,7 @@ export default function NextCards() {
             <Image
               alt="Card background"
               className="object-cover rounded-xl"
-              src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+              // src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
               width={270}
             />
           </CardBody>
