@@ -27,40 +27,44 @@ const etf = {
   interest: [{ month: "June", value: 1 }],
 };
 
-let regions = ["Tw", "Asia", "Global"];
+let regions = ["tw", "asia", "global"];
 
 const addMockMaterials = (material: any) => {
-  let res: any = [];
+  let res: any = {};
   let { type, name, id, point } = material;
   regions.forEach((region) => {
+    let tempRes = [];
     for (let i = 0; i < 10; i++) {
-      res.push({
+      tempRes.push({
         ...material,
         type: `${region}-${type}${i}`,
         name: `${region}-${name}${i}`,
-        id: `${id}${i}`,
+        id: `${region}-${id}${i}`,
         point: point + i,
       });
     }
+    res[region] = tempRes;
   });
 
   return res;
 };
 
 const addMockEtfs = (etf: any) => {
-  let res: any = [];
+  let res: any = {};
   let { type, name, id, point } = etf;
 
   regions.forEach((region) => {
+    let tempRes = [];
     for (let i = 0; i < 10; i++) {
-      res.push({
+      tempRes.push({
         ...etf,
         type: `${region}-${type}${i}`,
         name: `${region}-${name}${i}`,
-        id: `${id}${i}`,
+        id: `${region}-${id}${i}`,
         point: point + i,
       });
     }
+    res[region] = tempRes;
   });
 
   return res;
