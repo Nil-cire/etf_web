@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center items-center h-screen bg-black">
+      <main className="flex justify-center items-center h-screen bg-black overflow-y-auto">
         <div className="flex flex-col w-4/6">
           <NextCards />
           <NextTab />

@@ -22,7 +22,7 @@ export default function NextTab() {
           title={
             <div className="flex items-center space-x-2">
               <GalleryIcon/>
-              <span>USA</span>
+              <span>Asia</span>
             </div>
           }
         />
@@ -31,7 +31,7 @@ export default function NextTab() {
           title={
             <div className="flex items-center space-x-2">
               <GalleryIcon/>
-              <span>Japan</span>
+              <span>Global</span>
             </div>
           }
         />
