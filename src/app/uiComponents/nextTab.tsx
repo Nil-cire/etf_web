@@ -17,7 +17,7 @@ export default function NextTab({ onSelectionChange }: any) {
           title={
             <div className="flex items-center space-x-2">
               <GalleryIcon />
-              <span>Taiwan</span>
+              <span>Taiwan ETF</span>
             </div>
           }
         />
@@ -26,7 +26,7 @@ export default function NextTab({ onSelectionChange }: any) {
           title={
             <div className="flex items-center space-x-2">
               <GalleryIcon />
-              <span>Asia</span>
+              <span>Asia ETF</span>
             </div>
           }
         />
@@ -35,7 +35,7 @@ export default function NextTab({ onSelectionChange }: any) {
           title={
             <div className="flex items-center space-x-2">
               <GalleryIcon />
-              <span>Global</span>
+              <span>Global ETF</span>
             </div>
           }
         />

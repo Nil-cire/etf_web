@@ -49,9 +49,12 @@ export default function NextTable() {
         }}
       >
         <TableHeader>
-          <TableColumn key="type">TYPE</TableColumn>
-          <TableColumn key="name">NAME</TableColumn>
-          <TableColumn key="point">POINT</TableColumn>
+          <TableColumn key="name">ETF 名稱</TableColumn>
+          <TableColumn key="type">編號</TableColumn>
+          <TableColumn key="point">目前股價</TableColumn>
+          <TableColumn key="point">漲跌(1日)</TableColumn>
+          <TableColumn key="point">估值</TableColumn>
+          <TableColumn key="point">年化報酬率</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item: any) => (
