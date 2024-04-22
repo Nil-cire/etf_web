@@ -52,7 +52,8 @@ export default function NextTable() {
           <TableColumn key="name">ETF 名稱</TableColumn>
           <TableColumn key="type">編號</TableColumn>
           <TableColumn key="point">目前股價</TableColumn>
-          <TableColumn key="point">漲跌(1日)</TableColumn>
+          <TableColumn key="point">殖利率</TableColumn>
+          <TableColumn key="point">漲跌</TableColumn>
           <TableColumn key="point">估值</TableColumn>
           <TableColumn key="point">年化報酬率</TableColumn>
         </TableHeader>
