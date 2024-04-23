@@ -10,9 +10,10 @@ type material = {
   point: number;
 };
 export default function NextCards() {
+  const { asia, global, tw } = materials;
   return (
     <div className="grid grid-cols-5 gap-4">
-      {materials.map(({ type, name, id, point }: material) => (
+      {asia.map(({ type, name, id, point }: material) => (
         <Card className="mb-4 pb-2" key={id}>
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <p className="text-tiny uppercase font-bold">{type}</p>
