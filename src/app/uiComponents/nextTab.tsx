@@ -31,6 +31,15 @@ export default function NextTab({ onSelectionChange }: any) {
           }
         />
         <Tab
+          key="us"
+          title={
+            <div className="flex items-center space-x-2">
+              <GalleryIcon />
+              <span>Us ETF</span>
+            </div>
+          }
+        />
+        <Tab
           key="global"
           title={
             <div className="flex items-center space-x-2">
