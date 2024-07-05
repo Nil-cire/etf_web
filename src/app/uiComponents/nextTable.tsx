@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import {
   Table,
   TableHeader,
@@ -10,20 +10,30 @@ import {
   Pagination,
   getKeyValue,
 } from "@nextui-org/react";
-import { etfs } from "./mockcontents";
 import NextTab from "./nextTab";
-export default function NextTable() {
+
+interface LatestData {
+  [key: string]: any[];
+}
+
+interface NextTableProps {
+  latestData: LatestData;
+}
+
+export default function NextTable({ latestData }: NextTableProps) {
   const [region, setRegion] = useState("tw");
   const [page, setPage] = useState(1);
+  const dataRef = useRef();
   const rowsPerPage = 4;
 
-  const pages = Math.ceil(etfs[region].length / rowsPerPage);
+  const pages = Math.ceil(latestData[region].length / rowsPerPage);
+  console.log({ latestData, region, page });
 
+  // TODO: need to handle null case when get_etf_list returns nothing
   const items = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-
-    return etfs[region].slice(start, end);
+    return latestData[region].slice(start, end);
   }, [page, region]);
 
   return (
@@ -50,16 +60,16 @@ export default function NextTable() {
       >
         <TableHeader>
           <TableColumn key="name">ETF 名稱</TableColumn>
-          <TableColumn key="type">編號</TableColumn>
-          <TableColumn key="point">目前股價</TableColumn>
-          <TableColumn key="point">殖利率</TableColumn>
-          <TableColumn key="point">漲跌</TableColumn>
-          <TableColumn key="point">估值</TableColumn>
-          <TableColumn key="point">年化報酬率</TableColumn>
+          <TableColumn key="stock_no">編號</TableColumn>
+          <TableColumn key="price">目前股價</TableColumn>
+          <TableColumn key="interest">殖利率</TableColumn>
+          <TableColumn key="value_diff">漲跌</TableColumn>
+          <TableColumn key="estimate_value">估值</TableColumn>
+          <TableColumn key="y_estimate_value">年化報酬率</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item: any) => (
-            <TableRow key={item.id}>
+            <TableRow key={item.name}>
               {(columnKey) => (
                 <TableCell>{getKeyValue(item, columnKey)}</TableCell>
               )}
@@ -67,6 +77,7 @@ export default function NextTable() {
           )}
         </TableBody>
       </Table>
+      <div>{dataRef.current}</div>
     </>
   );
 }

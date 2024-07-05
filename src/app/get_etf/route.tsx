@@ -7,7 +7,6 @@ export async function GET(request: Request) {
         const sqlQuery = `SELECT * FROM ${db_name}`;
 
         const result = await sql.query(sqlQuery);
-        console.log(result);
 
         return NextResponse.json({ result }, { status: 200 });
     } catch (error) {
