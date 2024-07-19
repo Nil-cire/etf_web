@@ -37,7 +37,7 @@ export default function NextTable({ latestData }: NextTableProps) {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
     return latestData[region].slice(start, end);
-  }, [page, region]);
+  }, [page, region, latestData]);
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function NextTable({ latestData }: NextTableProps) {
           <TableColumn key="name">ETF 名稱</TableColumn>
           <TableColumn key="stock_no">編號</TableColumn>
           <TableColumn key="price">目前股價</TableColumn>
-          <TableColumn key="interest">殖利率</TableColumn>
+          {/* <TableColumn key="interest">殖利率</TableColumn> */}
           <TableColumn key="value_diff">漲跌</TableColumn>
           <TableColumn key="estimate_value">估值</TableColumn>
           <TableColumn key="y_estimate_value">年化報酬率</TableColumn>
