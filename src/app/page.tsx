@@ -31,7 +31,7 @@ export default async function Page() {
       </Head>
       <main className="flex justify-center items-center h-screen bg-black overflow-y-auto">
         <div className="flex flex-col w-4/6">
-          <NextCards />
+          {/* <NextCards /> */}
           <NextTable latestData={validMap} />
         </div>
       </main>

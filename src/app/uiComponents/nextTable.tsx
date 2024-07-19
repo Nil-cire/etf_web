@@ -23,14 +23,17 @@ interface NextTableProps {
 export default function NextTable({ latestData }: NextTableProps) {
   const [region, setRegion] = useState("tw");
   const [page, setPage] = useState(1);
-  const dataRef = useRef();
   const rowsPerPage = 4;
-
   const pages = Math.ceil(latestData[region].length / rowsPerPage);
-  console.log({ latestData, region, page });
+  const handleRegionChange = (region: string) => {
+    setRegion(region);
+  };
+  const handlePageChange = (page: number) => {
+    setPage(page);
+  };
 
   // TODO: need to handle null case when get_etf_list returns nothing
-  const items = useMemo(() => {
+  const getPaginatedData = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
     return latestData[region].slice(start, end);
@@ -38,7 +41,7 @@ export default function NextTable({ latestData }: NextTableProps) {
 
   return (
     <>
-      <NextTab onSelectionChange={(region: string) => setRegion(region)} />
+      <NextTab onSelectionChange={handleRegionChange} />
       <Table
         aria-label="Example table with client side pagination"
         bottomContent={
@@ -50,7 +53,7 @@ export default function NextTable({ latestData }: NextTableProps) {
               color="secondary"
               page={page}
               total={pages}
-              onChange={(page) => setPage(page)}
+              onChange={handlePageChange}
             />
           </div>
         }
@@ -67,17 +70,26 @@ export default function NextTable({ latestData }: NextTableProps) {
           <TableColumn key="estimate_value">估值</TableColumn>
           <TableColumn key="y_estimate_value">年化報酬率</TableColumn>
         </TableHeader>
-        <TableBody items={items}>
+        <TableBody items={getPaginatedData}>
           {(item: any) => (
             <TableRow key={item.name}>
               {(columnKey) => (
-                <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+                <TableCell
+                  className={
+                    columnKey === "value_diff"
+                      ? item.value_diff.startsWith("-")
+                        ? "text-green-500"
+                        : "text-red-500"
+                      : ""
+                  }
+                >
+                  {getKeyValue(item, columnKey)}
+                </TableCell>
               )}
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <div>{dataRef.current}</div>
     </>
   );
 }
