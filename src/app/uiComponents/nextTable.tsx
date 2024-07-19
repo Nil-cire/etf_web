@@ -27,6 +27,7 @@ export default function NextTable({ latestData }: NextTableProps) {
   const pages = Math.ceil(latestData[region].length / rowsPerPage);
   const handleRegionChange = (region: string) => {
     setRegion(region);
+    setPage(1);
   };
   const handlePageChange = (page: number) => {
     setPage(page);
@@ -34,6 +35,9 @@ export default function NextTable({ latestData }: NextTableProps) {
 
   // TODO: need to handle null case when get_etf_list returns nothing
   const getPaginatedData = useMemo(() => {
+    if (!latestData[region]) {
+      return [];
+    }
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
     return latestData[region].slice(start, end);
