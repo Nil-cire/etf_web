@@ -1,7 +1,26 @@
 import Head from "next/head";
 import NextTable from "./uiComponents/nextTable";
 import NextCards from "./uiComponents/nextCards";
-export default function Home() {
+import get_etf_list from "../../repo/etfList";
+import { DataItem } from "./types";
+
+const validMap: { [key: string]: any } = {
+  tw: [],
+  asia: [],
+  global: [],
+  us: [],
+};
+
+async function fetchData() {
+  const data: DataItem[] | null = await get_etf_list();
+  console.log({ data });
+  if (data === null) {
+    return [];
+  }
+  data.forEach((item: DataItem) => validMap[item.type].push(item));
+}
+export default async function Page() {
+  await fetchData();
   return (
     <>
       <Head>
@@ -12,8 +31,8 @@ export default function Home() {
       </Head>
       <main className="flex justify-center items-center h-screen bg-black overflow-y-auto">
         <div className="flex flex-col w-4/6">
-          <NextCards />
-          <NextTable />
+          {/* <NextCards /> */}
+          <NextTable latestData={validMap} />
         </div>
       </main>
     </>
